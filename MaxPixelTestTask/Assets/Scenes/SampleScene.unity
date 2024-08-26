@@ -1616,6 +1616,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e3f54946815711c47bcb0c3e9816e4b0, type: 3}
   m_PrefabInstance: {fileID: 873043983}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &873043985 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: e3f54946815711c47bcb0c3e9816e4b0, type: 3}
+  m_PrefabInstance: {fileID: 873043983}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &929420541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1963,6 +1968,13 @@ MonoBehaviour:
     TypeName: ATG.Root.ProjectRoot
   autoRun: 1
   autoInjectGameObjects: []
+  zombieFactory:
+    zombieView: {fileID: 5866666021784102144}
+    animatorCreator:
+      animator: {fileID: 5866666021784102140}
+      callbackService: {fileID: 5866666021784102143}
+      IKRig: {fileID: 165918866}
+      config: {fileID: 11400000, guid: 64ac4f15010fdc34daf1b4a25aee6cb2, type: 2}
 --- !u!1001 &1024855942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3181,10 +3193,12 @@ GameObject:
   m_Component:
   - component: {fileID: 543450653473013382}
   - component: {fileID: 5866666021784102140}
+  - component: {fileID: 5866666021784102143}
   - component: {fileID: 5866666021784102142}
   - component: {fileID: 5866666021784102141}
+  - component: {fileID: 5866666021784102144}
   m_Layer: 0
-  m_Name: avatar-main
+  m_Name: zombie-view
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4257,6 +4271,34 @@ MonoBehaviour:
   - {fileID: 8390307989940444013}
   - {fileID: 6946111780891363936}
   - {fileID: 8261914900255128901}
+--- !u!114 &5866666021784102143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149280810044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0527c072b62fc14699e38b31857dcb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5866666021784102144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149280810044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77bc2f0085479f545949f83aae8083f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 7173442222591449462}
+  - {fileID: 873043985}
+  shovelRenderer: {fileID: 873043985}
 --- !u!4 &5972657505767059859
 Transform:
   m_ObjectHideFlags: 0
