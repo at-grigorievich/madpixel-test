@@ -1,0 +1,45 @@
+{
+    "name": "SimplyInput",
+    "maps": [
+        {
+            "name": "Base",
+            "id": "06abb85d-7bd2-417a-8fda-1a19a22ed235",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "23b4c2b9-d54e-4a8d-9dd7-2261adc7c1ca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "07777217-2596-4af1-9e15-25febded1656",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1819df0-76ab-4538-a9ff-df76aef6655a",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
