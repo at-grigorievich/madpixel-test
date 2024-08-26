@@ -49,7 +49,9 @@ namespace ATG.Input
             if(IsActive == false) return;
         }
 
-        private void OnClickHandled(InputAction.CallbackContext _) =>
+        private void OnClickHandled(InputAction.CallbackContext _)
+        {
             OnInputInvoke?.Invoke(InputType.Click);
+        }
     }
 }

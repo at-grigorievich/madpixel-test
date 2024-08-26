@@ -10,10 +10,10 @@ namespace ATG.Animation
         private readonly Rig _ikRig;
 
         private readonly IAnimatorCallback _animatorCallback;
-        
+
         private readonly AnimatorData _config;
 
-        public bool IsActive { get; private set;}
+        public bool IsActive { get; private set; }
 
         public event Action<AnimationType> OnAnimationEventHandled;
 
@@ -33,10 +33,10 @@ namespace ATG.Animation
 
         public void PlayCrossfade(AnimationType animationType, float? customFadeTime = null)
         {
-            if(IsActive == false) return;
+            if (IsActive == false) return;
 
             AnimationData data = _config.GetAnimationDataByType(animationType);
-            
+
             float duration = customFadeTime.HasValue ? customFadeTime.Value : data.Duration;
 
             _animator.CrossFade(data.Name, duration);
