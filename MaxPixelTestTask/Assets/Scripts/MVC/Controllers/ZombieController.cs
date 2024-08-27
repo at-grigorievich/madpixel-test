@@ -1,4 +1,5 @@
 using ATG.Animation;
+using ATG.Equipment;
 using ATG.Input;
 using ATG.StateMachine;
 using VContainer;
@@ -8,11 +9,13 @@ using SM = ATG.StateMachine.StateMachine;
 
 namespace ATG.MVC
 {
-    public sealed class ZombieController : Controller<ZombieView>, ITickable
+    public sealed class ZombieController : Controller<ZombieView>, ITickable, IEquipmentService
     {
         private readonly IAnimatorService _animatorService;
 
         private readonly SM _sm;
+
+        public EquipmentData CurrentEquipment => _view.CurrentEquipment;
 
         public ZombieController(IObjectResolver resolver, ZombieView view) : base(view)
         {
@@ -51,5 +54,10 @@ namespace ATG.MVC
             if (IsActive == false) return;
             _sm.ExecuteMachine();
         }
+
+        #region  IEquipmentService referenced
+        public void Equip(EquipmentData equipmentConfig) => _view.Equip(equipmentConfig);
+        public void ClearAll() => _view.ClearAll();
+        #endregion
     }
 }

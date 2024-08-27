@@ -32,16 +32,15 @@ namespace ATG.MVC
             pokePunchVFX.Stop();
         }
 
-        [ContextMenu("test poke punch")]
-        public void AnimatePokePunch()
+        public void AnimatePokePunch(Action callback)
         {
             Dispose();
 
-            _animation = PokePunchAnimation();
+            _animation = PokePunchAnimation(callback);
             StartCoroutine(_animation);
         }
 
-        private IEnumerator PokePunchAnimation()
+        private IEnumerator PokePunchAnimation(Action callback)
         {
             while(_currentAnimationTime <  1f)
             {
@@ -59,7 +58,9 @@ namespace ATG.MVC
             if(model.UseVFXOnFinish == true)
             {
                 pokePunchVFX.Play();
-            }
+            }  
+
+            callback?.Invoke();
 
             _animation = null;
         }

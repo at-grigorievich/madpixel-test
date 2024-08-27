@@ -1,3 +1,5 @@
+using System;
+
 namespace ATG.MVC
 {
     public sealed class ChestController : Controller<ChestView>
@@ -6,6 +8,6 @@ namespace ATG.MVC
         {
         }
 
-        public void AnimatePokePunch() => _view.AnimatePokePunch();
+        public void AnimatePokePunch(Action callback = null) => _view.AnimatePokePunch(callback);
     }
 }
