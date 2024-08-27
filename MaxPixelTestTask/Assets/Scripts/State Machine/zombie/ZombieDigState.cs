@@ -9,10 +9,15 @@ namespace ATG.StateMachine
 
         private readonly IAnimatorService _animatorService;
 
-        public ZombieDigState(IAnimatorService animatorService, ZombieView view, IStateSwitcher sw) : base(sw)
+        private readonly ChestController _chest;
+
+        public ZombieDigState(IAnimatorService animatorService, ChestController chest, ZombieView view, 
+            IStateSwitcher sw) : base(sw)
         {
             _zombieView = view;
             _animatorService = animatorService;
+
+            _chest = chest;
         }
 
         public override void Enter()
@@ -21,12 +26,12 @@ namespace ATG.StateMachine
             _animatorService.PlayCrossfade(AnimationType.Dig);
             _zombieView.SetShovelRendererEnable(true);
 
-            _animatorService.OnAnimatorReceived += OnDiggingFinishedReceived;
+            _animatorService.OnAnimatorReceived += OnAnimatorReceived;
         }
 
         public override void Exit()
         {
-            _animatorService.OnAnimatorReceived -= OnDiggingFinishedReceived;
+            _animatorService.OnAnimatorReceived -= OnAnimatorReceived;
         }
 
         public override void Execute()
@@ -34,9 +39,26 @@ namespace ATG.StateMachine
 
         }
 
-        private void OnDiggingFinishedReceived(object sender, string e)
+        private void OnAnimatorReceived(object sender, string animatorEventName)
+        {
+            if(animatorEventName == AnimatorCallbackService.CompleteDig)
+            {
+                FinishDigging();
+            }
+            else if(animatorEventName == AnimatorCallbackService.InteractDig)
+            {
+                InteractDigging();
+            }
+        }
+
+        private void FinishDigging()
         {
             _stateSwitcher.SwitchState<ZombieIdleState>();
+        }
+
+        private void InteractDigging()
+        {
+            _chest.AnimatePokePunch();
         }
     }
 }

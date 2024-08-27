@@ -19,13 +19,14 @@ namespace ATG.MVC
             _animatorService = resolver.Resolve<IAnimatorService>();
 
             var inputService = resolver.Resolve<IInputService>();
+            var chestController = resolver.Resolve<ChestController>();
 
             _sm = new SM();
 
             _sm.AddStatementsRange
             (
                 new ZombieIdleState(inputService, _animatorService, _view, _sm),
-                new ZombieDigState(_animatorService, _view, _sm)
+                new ZombieDigState(_animatorService, chestController, _view, _sm)
             );
 
             _sm.SwitchState<ZombieIdleState>();

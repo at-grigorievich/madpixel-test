@@ -7,6 +7,7 @@ namespace ATG.Animation
 	public sealed class AnimatorCallbackService: MonoBehaviour, IAnimatorCallback
 	{
 		public const string CompleteDig = "FinishDigging";
+		public const string InteractDig = "InteractDigging";
 
 		public event EventHandler<string> OnAnimatorReceived;
 		

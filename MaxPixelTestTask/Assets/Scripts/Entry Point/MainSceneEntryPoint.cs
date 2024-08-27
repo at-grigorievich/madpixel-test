@@ -9,18 +9,21 @@ namespace ATG.Entry
     {
         private readonly IInputService _inputService;
         private readonly ZombieController _zombieController;
+        private readonly ChestController _chestController;
 
-        public MainSceneEntryPoint(IInputService inputService, ZombieController zombieController)
+        public MainSceneEntryPoint(IInputService inputService, ZombieController zombieController, ChestController chestController)
         {
             _inputService = inputService;
 
             _zombieController = zombieController;
+            _chestController = chestController;
         }
 
         public void Start()
         {
             _inputService.SetActive(true);
             _zombieController.SetActive(true);
+            _chestController.SetActive(true);
         }
 
         public void Dispose()
