@@ -15,8 +15,6 @@ namespace ATG.Animation
 
         public bool IsActive { get; private set; }
 
-        public event Action<AnimationType> OnAnimationEventHandled;
-
         public event EventHandler<string> OnAnimatorReceived
         {
             add => _animatorCallback.OnAnimatorReceived += value;

@@ -10,5 +10,10 @@ namespace ATG.Equipment
         [field: SerializeField] public Vector3 LocalPosition { get; private set; }
         [field: SerializeField] public Vector3 LocalEulerAngles { get; private set; }
         [field: SerializeField] public Vector3 LocalScale { get; private set; }
+
+        [field: Header("UI Parameters")]
+        [field: SerializeField] public float ZoomValue { get; private set; } = 60f;
+        [field: SerializeField] public Vector3 RectPosition { get; private set; }
+        [field: SerializeField] public string Name {get; private set;}
     }
 }

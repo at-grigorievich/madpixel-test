@@ -1,6 +1,7 @@
 using ATG.Animation;
 using ATG.Equipment;
 using ATG.Input;
+using ATG.Observable;
 using ATG.StateMachine;
 using VContainer;
 using VContainer.Unity;
@@ -24,12 +25,15 @@ namespace ATG.MVC
             var inputService = resolver.Resolve<IInputService>();
             var chestController = resolver.Resolve<ChestController>();
 
+            var uiLocator = resolver.Resolve<UILocator>();
+            var messageBroker = resolver.Resolve<IMessageBroker>();
+
             _sm = new SM();
 
             _sm.AddStatementsRange
             (
                 new ZombieIdleState(inputService, _animatorService, _view, _sm),
-                new ZombieDigState(_animatorService, chestController, _view, _sm)
+                new ZombieDigState(messageBroker, uiLocator, _animatorService, chestController, _view, _sm)
             );
 
             _sm.SwitchState<ZombieIdleState>();

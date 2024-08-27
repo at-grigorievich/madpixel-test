@@ -1,5 +1,7 @@
 using ATG.Animation;
+using ATG.Messages;
 using ATG.MVC;
+using ATG.Observable;
 
 namespace ATG.StateMachine
 {
@@ -8,14 +10,22 @@ namespace ATG.StateMachine
         private readonly ZombieView _zombieView;
 
         private readonly IAnimatorService _animatorService;
+        private readonly UILocator _uiLocator;
+
+        private readonly IMessageBroker _messageBroker;
 
         private readonly ChestController _chest;
 
-        public ZombieDigState(IAnimatorService animatorService, ChestController chest, ZombieView view, 
-            IStateSwitcher sw) : base(sw)
+        private ObserveDisposable _dis;
+
+        public ZombieDigState(IMessageBroker worldMessageBroker, UILocator uiLocator, IAnimatorService animatorService, ChestController chest, 
+            ZombieView view, IStateSwitcher sw) : base(sw)
         {
             _zombieView = view;
             _animatorService = animatorService;
+
+            _messageBroker = worldMessageBroker;
+            _uiLocator = uiLocator;
 
             _chest = chest;
         }
@@ -27,11 +37,14 @@ namespace ATG.StateMachine
             _zombieView.SetShovelRendererEnable(true);
 
             _animatorService.OnAnimatorReceived += OnAnimatorReceived;
+
+            _dis = _messageBroker.Subscribe<CompleteDiggingMessage>(OnCompleteDiggingMessage);
         }
 
         public override void Exit()
         {
             _animatorService.OnAnimatorReceived -= OnAnimatorReceived;
+            _dis?.Dispose();
         }
 
         public override void Execute()
@@ -43,22 +56,27 @@ namespace ATG.StateMachine
         {
             if(animatorEventName == AnimatorCallbackService.CompleteDig)
             {
-                FinishDigging();
+                FinishDiggingAnimation();
             }
             else if(animatorEventName == AnimatorCallbackService.InteractDig)
             {
-                InteractDigging();
+                InteractWithChest();
             }
         }
 
-        private void FinishDigging()
+        private void FinishDiggingAnimation()
         {
-            _stateSwitcher.SwitchState<ZombieIdleState>();
+            _uiLocator.ShowByType(UserInterface.UIElementType.EquipmentDrop);
         }
 
-        private void InteractDigging()
+        private void InteractWithChest()
         {
             _chest.AnimatePokePunch();
+        }
+    
+        private void OnCompleteDiggingMessage(IMessage msg)
+        {
+            _stateSwitcher.SwitchState<ZombieIdleState>();
         }
     }
 }
