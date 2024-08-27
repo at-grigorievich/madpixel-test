@@ -1,6 +1,7 @@
 using ATG.Animation;
 using ATG.Equipment;
 using ATG.Input;
+using ATG.Mana;
 using ATG.Observable;
 using ATG.StateMachine;
 using VContainer;
@@ -13,6 +14,7 @@ namespace ATG.MVC
     public sealed class ZombieController : Controller<ZombieView>, ITickable, IEquipmentService
     {
         private readonly IAnimatorService _animatorService;
+        private readonly IManaService _manaService;
 
         private readonly SM _sm;
 
@@ -21,6 +23,7 @@ namespace ATG.MVC
         public ZombieController(IObjectResolver resolver, ZombieView view) : base(view)
         {
             _animatorService = resolver.Resolve<IAnimatorService>();
+            _manaService = resolver.Resolve<IManaService>();
 
             var inputService = resolver.Resolve<IInputService>();
             var chestController = resolver.Resolve<ChestController>();
@@ -32,7 +35,7 @@ namespace ATG.MVC
 
             _sm.AddStatementsRange
             (
-                new ZombieIdleState(inputService, _animatorService, _view, _sm),
+                new ZombieIdleState(inputService, _manaService, _animatorService, _view, _sm),
                 new ZombieDigState(messageBroker, uiLocator, _animatorService, chestController, _view, _sm)
             );
 
@@ -43,6 +46,7 @@ namespace ATG.MVC
         {
             base.SetActive(isActive);
 
+            _manaService.SetActive(isActive);
             _animatorService.SetActive(isActive);
 
             _sm.PauseMachine();

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09532ec2f5826d346ae4e4a3a37e2686, type: 3}
   m_Name: crown-hat
   m_EditorClassIdentifier: 
+  <Name>k__BackingField: "\u041A\u043E\u0440\u043E\u043D\u0430 \u0431\u043E\u0441\u0441\u0430"
+  <SellManaCost>k__BackingField: 10
   <Mesh>k__BackingField: {fileID: 4300002, guid: 598a1f45fefa08846b93be35e98f166e, type: 3}
   <Materials>k__BackingField:
   - {fileID: 2100006, guid: 598a1f45fefa08846b93be35e98f166e, type: 3}
@@ -22,4 +24,3 @@ MonoBehaviour:
   <LocalScale>k__BackingField: {x: 1, y: 1, z: 1}
   <ZoomValue>k__BackingField: 35
   <RectPosition>k__BackingField: {x: 0.02, y: -0.15, z: 0.7}
-  <Name>k__BackingField: "\u041A\u043E\u0440\u043E\u043D\u0430 \u0431\u043E\u0441\u0441\u0430"

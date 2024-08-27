@@ -1,5 +1,6 @@
 using ATG.Animation;
 using ATG.Input;
+using ATG.Mana;
 using ATG.MVC;
 
 namespace ATG.StateMachine
@@ -8,17 +9,21 @@ namespace ATG.StateMachine
     {
         private readonly ZombieView _zombieView;
 
+        private readonly IManaService _manaService;
+
         private readonly IAnimatorService _animatorService;
         private readonly IInputService _inputService;
 
-        public ZombieIdleState(IInputService inputService, IAnimatorService animatorService, ZombieView view,
-            IStateSwitcher sw) : base(sw)
+        public ZombieIdleState(IInputService inputService, IManaService manaService, IAnimatorService animatorService,
+            ZombieView view, IStateSwitcher sw) : base(sw)
         {
             _zombieView = view;
 
             _animatorService = animatorService;
 
             _inputService = inputService;
+
+            _manaService = manaService;
         }
 
         public override void Enter()
@@ -42,9 +47,12 @@ namespace ATG.StateMachine
 
         private void OnInputInvoked(InputType inputType)
         {
-            if(inputType != InputType.Click) return;
-            
-            _stateSwitcher.SwitchState<ZombieDigState>();
+            if (inputType != InputType.Click) return;
+
+            if (_manaService.TryUseMana(_zombieView.ManaUsed) == true)
+            {
+                _stateSwitcher.SwitchState<ZombieDigState>();
+            }
         }
     }
 }

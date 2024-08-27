@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ATG.Equipment
 {
-    public class VisualEquipmentService : IActivateable
+    public class VisualEquipmentService : IActivateable, IDisposable
     {
         private readonly Camera _camera;
 
@@ -38,14 +38,6 @@ namespace ATG.Equipment
                 _renderer.enabled = isActive;
             }
 
-            if (IsActive == false)
-            {
-                _meshFilter.sharedMesh = null;
-                _renderer.sharedMaterials = Array.Empty<Material>();
-
-                _currentEquipment = null;
-            }
-
             IsActive = isActive;
         }
 
@@ -61,6 +53,23 @@ namespace ATG.Equipment
 
             _camera.fieldOfView = equipmentConfig.ZoomValue;
             _transform.localPosition = equipmentConfig.RectPosition;
+        }
+
+        public void Dispose()
+        {
+            if (IsActive == false)
+            {
+                if(_meshFilter != null)
+                {
+                    _meshFilter.sharedMesh = null;
+                }
+
+                if(_renderer != null)
+                {
+                    _renderer.sharedMaterials = Array.Empty<Material>();
+                }
+                _currentEquipment = null;
+            }
         }
     }
 }

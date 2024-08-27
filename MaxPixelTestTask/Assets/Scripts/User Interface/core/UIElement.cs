@@ -20,7 +20,10 @@ namespace ATG.UserInterface
 
         public void SetActive(bool isActive)
         {
-            _canvas.enabled = isActive;
+            if (_canvas != null)
+            {
+                _canvas.enabled = isActive;
+            }
 
             IsActive = isActive;
         }

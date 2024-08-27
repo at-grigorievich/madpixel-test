@@ -1,6 +1,7 @@
 using ATG.Entry;
 using ATG.Equipment;
 using ATG.Factory;
+using ATG.Mana;
 using ATG.UserInterface;
 using UnityEngine;
 using VContainer;
@@ -14,6 +15,7 @@ namespace ATG.Root
         [SerializeField] private ChestFactory chestFactory;
         [SerializeField] private VisualEquipmentServiceFactory visualEquipmentServiceFactory;
         [SerializeField] private UILocatorCreator uiLocatorCreator;
+        [SerializeField] private ManaServiceCreator manaServiceCreator;
         [SerializeField] private EquipmentDataSet equipmentDataSet;
 
         protected override void Configure(IContainerBuilder builder)
@@ -22,6 +24,7 @@ namespace ATG.Root
             chestFactory.CreateAndInject(builder);
             visualEquipmentServiceFactory.CreateAndInject(builder);
             uiLocatorCreator.CreateAndInject(builder);
+            manaServiceCreator.CreateAndInject(builder);
 
             builder.RegisterInstance(equipmentDataSet);
 

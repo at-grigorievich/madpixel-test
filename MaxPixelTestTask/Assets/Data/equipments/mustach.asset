@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09532ec2f5826d346ae4e4a3a37e2686, type: 3}
   m_Name: mustach
   m_EditorClassIdentifier: 
+  <Name>k__BackingField: "\u0423\u0441\u0438\u043A\u0438"
+  <SellManaCost>k__BackingField: 45
   <Mesh>k__BackingField: {fileID: 4300002, guid: 67f444199e01f7341adb39837f8c9ba2, type: 3}
   <Materials>k__BackingField:
   - {fileID: 2100002, guid: 67f444199e01f7341adb39837f8c9ba2, type: 3}
@@ -20,4 +22,3 @@ MonoBehaviour:
   <LocalScale>k__BackingField: {x: 1, y: 1, z: 1}
   <ZoomValue>k__BackingField: 30
   <RectPosition>k__BackingField: {x: 0.015, y: -0.05, z: 0.7}
-  <Name>k__BackingField: "\u0423\u0441\u0438\u043A\u0438"

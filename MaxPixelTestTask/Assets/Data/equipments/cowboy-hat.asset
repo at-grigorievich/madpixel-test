@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09532ec2f5826d346ae4e4a3a37e2686, type: 3}
   m_Name: cowboy-hat
   m_EditorClassIdentifier: 
+  <Name>k__BackingField: "\u041A\u043E\u0432\u0431\u043E\u0439\u0441\u043A\u0430\u044F
+    \u0448\u043B\u044F\u043F\u0430"
+  <SellManaCost>k__BackingField: 15
   <Mesh>k__BackingField: {fileID: 4300002, guid: a0dfaf0497ab5334a99165f16b697e6e, type: 3}
   <Materials>k__BackingField:
   - {fileID: 2100000, guid: a0dfaf0497ab5334a99165f16b697e6e, type: 3}
@@ -23,5 +26,3 @@ MonoBehaviour:
   <LocalScale>k__BackingField: {x: 1, y: 1, z: 1}
   <ZoomValue>k__BackingField: 45
   <RectPosition>k__BackingField: {x: 0, y: -0.1, z: 0.7}
-  <Name>k__BackingField: "\u041A\u043E\u0432\u0431\u043E\u0439\u0441\u043A\u0430\u044F
-    \u0448\u043B\u044F\u043F\u0430"

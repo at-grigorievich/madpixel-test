@@ -12,9 +12,11 @@ namespace ATG.Entry
         private readonly ZombieController _zombieController;
         private readonly ChestController _chestController;
 
+        private UILocator _uiLocator;
+
         private readonly VisualEquipmentService _visualEquipmentService;
 
-        public MainSceneEntryPoint(IInputService inputService, ZombieController zombieController, 
+        public MainSceneEntryPoint(IInputService inputService, UILocator uILocator, ZombieController zombieController, 
             ChestController chestController, VisualEquipmentService visualEquipmentService)
         {
             _inputService = inputService;
@@ -23,6 +25,8 @@ namespace ATG.Entry
             _chestController = chestController;
 
             _visualEquipmentService = visualEquipmentService;
+
+            _uiLocator = uILocator;
         }
 
         public void Start()
@@ -32,11 +36,14 @@ namespace ATG.Entry
             _inputService.SetActive(true);
             _zombieController.SetActive(true);
             _chestController.SetActive(true);
+
+            _uiLocator.ShowByType(UserInterface.UIElementType.Main);
         }
 
         public void Dispose()
         {
-            _visualEquipmentService.SetActive(false);
+            _visualEquipmentService.Dispose();
+            _uiLocator.Dispose();
         }
     }
 }

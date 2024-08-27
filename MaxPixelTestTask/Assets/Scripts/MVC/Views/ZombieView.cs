@@ -10,6 +10,8 @@ namespace ATG.MVC
         [Space(5)]
         [SerializeField] private GameObject equipmentTarget;
 
+        [field: SerializeField] public float ManaUsed;
+
         private IEquipmentService _equipmentService;
 
         public EquipmentData CurrentEquipment => _equipmentService.CurrentEquipment;

@@ -5,7 +5,7 @@ using ATG.UserInterface;
 namespace ATG.MVC
 {
 
-    public sealed class UILocator
+    public sealed class UILocator: IDisposable
     {
         private readonly IReadOnlyDictionary<UIElementType, UIElement> _views;
 
@@ -28,6 +28,14 @@ namespace ATG.MVC
                 throw new NullReferenceException($"UI Element with {type} type not exist");
 
             _views[type].Hide();
+        }
+
+        public void Dispose()
+        {
+            foreach(var ui in _views.Values)
+            {
+                ui.Hide();
+            }
         }
     }
 }
