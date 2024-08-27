@@ -27,6 +27,16 @@ namespace ATG.Equipment
         {
             _renderer.enabled = isActive;
 
+            if(isActive == false)
+            {
+                ClearAll();
+            }
+            else if(CurrentEquipment != null)
+            {
+                UpdateMesh();
+                UpdateLocalTransform();
+            }
+
             IsActive = isActive;
         }
 

@@ -10,11 +10,13 @@ namespace ATG.Root
     {
         [SerializeField] private ZombieFactory zombieFactory;
         [SerializeField] private ChestFactory chestFactory;
+        [SerializeField] private VisualEquipmentServiceFactory visualEquipmentServiceFactory;
 
         protected override void Configure(IContainerBuilder builder)
         {
             zombieFactory.CreateAndInject(builder);
             chestFactory.CreateAndInject(builder);
+            visualEquipmentServiceFactory.CreateAndInject(builder);
 
             builder.RegisterEntryPoint<MainSceneEntryPoint>(Lifetime.Singleton);
         }
