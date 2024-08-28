@@ -21,8 +21,8 @@ MonoBehaviour:
   - {fileID: 2100022, guid: 290f57b34312fbf448d3b8ca6b6bd41d, type: 3}
   - {fileID: 2100020, guid: 290f57b34312fbf448d3b8ca6b6bd41d, type: 3}
   - {fileID: 2100024, guid: 290f57b34312fbf448d3b8ca6b6bd41d, type: 3}
-  <LocalPosition>k__BackingField: {x: 0.00011, y: 0.00162, z: 0.00008}
-  <LocalEulerAngles>k__BackingField: {x: 347.15277, y: 0.0000018608529, z: 353.00052}
+  <LocalPosition>k__BackingField: {x: 0.00013, y: 0.00179, z: -0.00031}
+  <LocalEulerAngles>k__BackingField: {x: 347.15277, y: 0.000016200365, z: 339.0117}
   <LocalScale>k__BackingField: {x: 1, y: 1, z: 1}
   <ZoomValue>k__BackingField: 45
   <RectPosition>k__BackingField: {x: 0, y: -0.1, z: 0.7}
